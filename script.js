@@ -1,10 +1,8 @@
-//const buttons = ['clear', 'delete', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ]
-
 const divs = document.getElementById('gridContainer').children;
 
 for (let i = 0; i<divs.length; i++)
     {
-        if (divs[i].id == 'output') continue;
+        if (divs[i].id == 'output' || divs[i].id == 'result') continue;
 
         divs[i].classList.add('onHover');
     };
@@ -68,12 +66,20 @@ function getResult(x, y, operand){
                 resultant = multiply(x, y);
                 break;
         }
-        
+        let test = resultant.toString.length;
+        console.log('length of test: '+ test);
+
+        //if (test >13){
+            resultant = parseFloat(resultant.toFixed(8));
+        //}
+        console.log('the resultant length is: ' + resultant.length);
+        console.log('typeOf resultant is: ' + typeof resultant);
         return resultant;
     }
 document.addEventListener('keypress', function(e)
                                              {
-                            if ((e.code>= 48 && e.code <= 57) || (e.code >= 96 && e.code <= 105)) { // 0-9 only
+                                                 console.log(e);
+                            if ((e.keyCode>= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) { // 0-9 only
                                 console.log(e.key);
                                 output.textContent += e.key;
                                 result.textContent += e.key;
@@ -94,7 +100,10 @@ buttons.forEach(btn =>
                             
                                 switch(value) {
                                     case '.':
-                                        if (myNum.includes('.')) 
+                                        console.log('We are in the decimal case!');
+                                        console.log('myNum is: ' + myNum)
+                                        let myNumCheck = myNum.toString();
+                                        if (myNumCheck.includes('.')) 
                                             break;
                                         myNum += value;
                                         output.textContent += value;
@@ -110,7 +119,7 @@ buttons.forEach(btn =>
                                     case '7':
                                     case '8':
                                     case '9':
-                                        
+                                        if (output.textContent.length > 12) break;
                                         output.textContent += value;
                                         result.textContent += value;
                                         console.log('the content is: ' + output.textContent);
