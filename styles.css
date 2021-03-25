@@ -1,0 +1,57 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Audiowide';
+    font-size: 25px;
+    background: #0A282A;
+    background: -webkit-linear-gradient(top left, #0A282A, #422197);
+    background: -moz-linear-gradient(top left, #0A282A, #422197);
+    background: linear-gradient(to bottom right, #0A282A, #422197);
+}
+
+#gridContainer {
+    display: grid;
+    background-color: #2196F3;
+    grid-gap: 5px;
+    width: 250px;
+    text-align: center;
+    margin: 150px auto;
+    padding: 5px;
+
+}
+
+#gridContainer > div {
+    background-color: azure;
+}
+
+#result {
+    height: 35px;
+    background-color: gray;
+    text-align: right;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+#output {
+    height: 50px;
+    background-color: gray;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    text-align: right;
+}
+
+#clear {
+    grid-column: 1/ span 2;
+}
+#delete {
+    grid-column: 3/span 2;
+}
+
+.onHover:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    color: rgb(241, 1, 1);
+    box-shadow: .5px 1px 5px red;
+}
